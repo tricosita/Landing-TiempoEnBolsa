@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  border-bottom: 1px solid #111;
+  position: sticky;
+  top: 0;
+  background: rgba(8, 8, 8, 0.96);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ejes {
+  display: flex;
+  gap: 14px;
+}
+
+.pill {
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid;
+  transition: all 0.25s;
+  cursor: default;
+}
+.pill:hover { color: var(--bg); background: currentColor; }
+
+.t { color: var(--territorio); border-color: var(--territorio); }
+.te { color: var(--tech); border-color: var(--tech); }
+.a { color: var(--arte); border-color: var(--arte); }
