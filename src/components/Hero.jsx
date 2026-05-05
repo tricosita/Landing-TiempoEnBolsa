@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
 
       <div className={styles.ghost}>
-        MEMORIA TERRITORIO BOLSA TIEMPO PILAR INVESTIGACIÓN PELLEGRINI ARTE TECNOLOGÍA ARCHIVO MEMORIA TERRITORIO BOLSA
+        MEMORIA TERRITORIO TIEMPO PILAR INVESTIGACIÓN PELLEGRINI ARTE TECNOLOGÍA ARCHIVO MEMORIA TERRITORIO TRANSMEDIA
       </div>
 
       <div className={styles.content}>
@@ -23,7 +23,7 @@ export default function Hero() {
         <div className={styles.rule} />
         <p className={styles.sub}>Laboratorio de Investigación Territorial</p>
         <div className={styles.meta}>
-          <span>Activo desde 2025</span>
+          <span>En proceso desde 2025</span>
           <span>·</span>
           <span>Territorio · Tecnología · Arte</span>
         </div>
