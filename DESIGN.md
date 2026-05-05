@@ -1,13 +1,13 @@
 # Tiempo en Bolsa — Decisiones de diseño
 
 Laboratorio de Investigación Territorial  
-Instituto Pellegrini · Pilar, Buenos Aires · Activo desde 2025
+Instituto Pellegrini · Pilar, Buenos Aires · En proceso desde 2025
 
 ---
 
 ## Qué es este sitio
 
-Landing page del proyecto Tiempo en Bolsa. Funciona simultáneamente como dispositivo de investigación, repositorio de archivo y generador de contenido. El sitio en sí es parte del ecosistema transmedia: no solo lo describe, lo encarna.
+Landing page del proyecto Tiempo en Bolsa. Funciona simultáneamente como dispositivo de investigación, repositorio de archivo y generador de contenido. El sitio en sí es parte del ecosistema transmedia.
 
 **Stack:** React + Vite · CSS Modules · desplegado en Vercel
 
@@ -57,13 +57,13 @@ La decisión de diseño central fue **no elegir una audiencia**: una sola landin
 
 **Por qué dorado:** evoca el latón de una placa, el desgaste de algo que duró. Coherente con un proyecto sobre memoria y tiempo.
 
-**Por qué turquesa y rosa:** los ejes tecnología y arte necesitaban colores que convivan con el dorado sin competir. El turquesa remite a pantallas, circuitos, datos. El rosa a producción artística, cuerpo, afecto.
+**Por qué turquesa y rosa:** los ejes tecnología y arte necesitaban colores que convivan con el dorado sin competir. El turquesa remite a pantallas, circuitos, datos. El rosa a producción artística, cuerpo, afecto. (also, me gusta el rosa)
 
 ### Tipografía
 
 **Space Mono** (Google Fonts) — monoespaciada, peso 400 y 700, con itálica.
 
-**Por qué monoespaciada:** la tipografía de terminal o máquina de escribir conecta directamente con la idea de archivo, registro, documento técnico. No es ornamental: es funcional con carácter. Evita la genericidad de sans-serif limpias que no dicen nada sobre el proyecto.
+**Por qué monoespaciada:** la tipografía de terminal o máquina de escribir conecta directamente con la idea de archivo, registro, documento técnico. Es funcional con carácter. Evita la genericidad de sans-serif limpias que no dicen nada sobre el proyecto.
 
 **Jerarquía tipográfica:**
 - Títulos de sección: `clamp(36px, 5vw, 60px)` · weight 700 · tracking `-2px`
@@ -93,7 +93,7 @@ Cada sección tiene tres bloques en grid `1fr 1fr 1fr` — uno por eje (Territor
 
 Al pasar el cursor sobre cada columna de la sección La Bolsa, el texto desaparece y emerge un placeholder de imagen. El color de fondo del reveal corresponde al eje: dorado para Territorio, turquesa para Tecnología, rosa para Arte.
 
-**Por qué:** la imagen no está todo el tiempo visible porque no queremos que el sitio parezca un portfolio fotográfico antes de tener las imágenes. El hover convierte la curiosidad en descubrimiento. Cuando se agreguen las imágenes reales, el efecto persiste y enriquece.
+**Por qué:** la imagen no está todo el tiempo visible porque no quiero que el sitio parezca un portfolio fotográfico antes de tener las imágenes. El hover convierte la curiosidad en descubrimiento. Cuando se agreguen las imágenes finales, el efecto persiste y enriquece.
 
 ### Cursor personalizado
 
@@ -162,7 +162,7 @@ Código → GitHub (tricosita/Landing-TiempoEnBolsa) → Vercel (auto-deploy)
 
 **URL de producción:** https://landing-tiempo-en-bolsa.vercel.app
 
-Para deployar cambios:
+NOTAS TRI Para deployar cambios:
 ```bash
 cd "landing-tiempo-en-bolsa"
 git add .
@@ -174,7 +174,7 @@ Vercel detecta el push y redeploya automáticamente en ~30 segundos.
 
 ---
 
-## Para agregar imágenes
+## Para agregar las imágenes
 
 ### Hero
 En `src/components/Hero.jsx`, reemplazar el `<div className={styles.bg}>` por:
@@ -204,4 +204,4 @@ Poner las imágenes en `public/images/`.
 
 ---
 
-*Documento generado con Claude Code · Mayo 2025*
+* Mayo 2025*
