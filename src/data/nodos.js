@@ -52,10 +52,34 @@ export const nodoExpo = {
 };
 
 export const timeline = [
-  { fecha: "2025 · Inicio", texto: "Apertura del laboratorio. Primeras entradas al predio. Definición de zonas de investigación y metodología de trabajo de campo." },
-  { fecha: "[ fecha ]", texto: "[ Agregar hito — primera entrevista / primer registro / primer nodo activado ]" },
-  { fecha: "[ fecha ]", texto: "[ Agregar hito ]" },
-  { fecha: "Hoy · 2025", texto: "Fase de consolidación. El laboratorio está activo. El ecosistema transmedia en desarrollo. Este sitio es parte del dispositivo." },
+  {
+    fecha: "Junio 2025",
+    texto: "TP de Transmedia I · Universidad Nacional de Pilar — Carrera de Comunicación Digital. Primera entrevista a Sonia Lembeye en las instalaciones del Pellegrini.",
+  },
+  {
+    fecha: "Julio 2025",
+    texto: "Desarrollo del concepto de un ART GAME para la materia Videojuegos y Sociedad de la Carrera de Desarrollo de Videojuegos · Universidad Nacional de Pilar.",
+  },
+  {
+    fecha: "Agosto 2025",
+    texto: "Análisis de factibilidad del proyecto en la Diplomatura Universitaria Cooperativismo Cultural · Universidad de Villa María. Definición de zonas de investigación y metodologías de trabajo.",
+  },
+  {
+    fecha: "Febrero 2026",
+    texto: "Inicio de recolección de información y testimonios en el marco de la Diplomatura Universitaria Patrimonio Cultural · Universidad Nacional de Villa María. Estructuración del proyecto bajo la pregunta-problema: ¿En qué medida el relato transmedia puede intervenir en el proceso por el cual una memoria privada —la de quienes habitaron el Instituto Carlos Pellegrini— se convierte en patrimonio cultural común, en un contexto donde el archivo material es fragmentario y el territorio que la sostenía está en proceso de borramiento?",
+  },
+  {
+    fecha: "Abril 2026",
+    texto: "Puesta en contacto con la Biblioteca Popular Bartolomé Mitre en el contexto de la materia Proyectos Socioculturales · Universidad Nacional de Pilar.",
+  },
+  {
+    fecha: "Abril 2026",
+    texto: "Biblia transmedia en el contexto de Taller Transmedia 2 · Universidad Nacional de Pilar. Estructura narrativa, mapa de navegación del público, análisis de audiencias, orden de implementación, escaletas, guiones e inicios de producción.",
+  },
+  {
+    fecha: "Mayo 2026",
+    texto: "El laboratorio está activo. Lanzamiento de esta landing page.",
+  },
 ];
 
 export const galeria = [

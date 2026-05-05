@@ -30,7 +30,13 @@ body {
   padding: 80px 48px;
   border-bottom: 1px solid #0f0f0f;
   position: relative;
-  transition: background 0.5s;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: background 0.5s, opacity 0.75s ease, transform 0.75s ease;
+}
+.seccion.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 .seccion:hover { background: rgba(200, 169, 110, 0.012); }
 

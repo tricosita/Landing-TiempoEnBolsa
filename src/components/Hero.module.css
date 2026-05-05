@@ -28,6 +28,11 @@
 }
 .bgHint strong { color: #252525; display: block; margin-bottom: 8px; font-size: 10px; }
 
+@keyframes ghostDrift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-3%); }
+}
+
 .ghost {
   position: absolute;
   inset: 0;
@@ -42,6 +47,7 @@
   word-break: break-all;
   pointer-events: none;
   transition: opacity 1s;
+  animation: ghostDrift 50s ease-in-out infinite;
 }
 .hero:hover .ghost { opacity: 0.05; }
 
@@ -58,6 +64,19 @@
   margin-bottom: 18px;
 }
 
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 .title {
   font-size: clamp(64px, 9vw, 120px);
   font-weight: 700;
@@ -65,6 +84,12 @@
   letter-spacing: -3px;
   color: #fff;
   margin-bottom: 10px;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  animation: letterIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .rule {

@@ -3,15 +3,7 @@ import styles from './Hero.module.css'
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      {/* imagen de fondo — reemplazar con <img> o <video> */}
-      <div className={styles.bg}>
-        <p className={styles.bgHint}>
-          <strong>[ IMAGEN / VIDEO DE FONDO ]</strong>
-          Fotografía o video del predio · horizontal · alta resolución<br />
-          Overlay negro al 70% · video: mp4 muted autoplay loop<br />
-          Recomendado: toma larga, luz rasante, espacio vacío
-        </p>
-      </div>
+      <div className={styles.bg} />
 
       <div className={styles.ghost}>
         MEMORIA TERRITORIO TIEMPO PILAR INVESTIGACIÓN PELLEGRINI ARTE TECNOLOGÍA ARCHIVO MEMORIA TERRITORIO TRANSMEDIA
@@ -19,7 +11,21 @@ export default function Hero() {
 
       <div className={styles.content}>
         <p className={styles.eyebrow}>Instituto Pellegrini · Pilar, Buenos Aires</p>
-        <h1 className={styles.title}>TIEMPO<br />EN BOLSA</h1>
+        <h1 className={styles.title}>
+          {['TIEMPO', 'EN BOLSA'].map((word, wi) => (
+            <span key={wi} style={{ display: 'block' }}>
+              {word.split('').map((l, li) => (
+                <span
+                  key={li}
+                  className={styles.letter}
+                  style={{ animationDelay: `${(wi === 0 ? li : 6 + li) * 65}ms` }}
+                >
+                  {l}
+                </span>
+              ))}
+            </span>
+          ))}
+        </h1>
         <div className={styles.rule} />
         <p className={styles.sub}>Laboratorio de Investigación Territorial</p>
         <div className={styles.meta}>
