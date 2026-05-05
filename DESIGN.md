@@ -170,6 +170,7 @@ La Exposición ocupa ancho completo en la grilla (`grid-column: 1 / -1`) porque 
 ---
 
 ## Franja de logos institucionales
+sacado de https://reactbits.dev/animations/logo-loop
 
 Componente `LogoLoop.jsx` — scroll infinito con CSS animation `translateX(0 → -50%)`. Duplica los logos para que el loop sea seamless.
 
@@ -256,8 +257,7 @@ git add .
 git commit -m "descripción del cambio"
 git push
 
-# deploy a Vercel (el proyecto no está enlazado a GitHub, usar CLI):
-vercel --prod --token <token> --yes --scope tricosita-projects
+
 ```
 
 **Para editar textos:** todos los textos de contenido están en `src/data/nodos.js` y en cada componente JSX. Los más frecuentes:
@@ -272,4 +272,4 @@ vercel --prod --token <token> --yes --scope tricosita-projects
 
 ---
 
-*Documento actualizado Mayo 2026 · generado con Claude Code*
+*Documento actualizado Mayo 2026 *
