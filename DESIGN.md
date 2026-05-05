@@ -7,7 +7,7 @@ Instituto Pellegrini · Pilar, Buenos Aires · En proceso desde 2025
 
 ## Qué es este sitio
 
-Landing page del proyecto Tiempo en Bolsa. Funciona simultáneamente como dispositivo de investigación, repositorio de archivo y generador de contenido. El sitio en sí es parte del ecosistema transmedia.
+Landing page del proyecto Tiempo en Bolsa. Funciona simultáneamente como dispositivo de investigación, repositorio de archivo y generador de contenido. El sitio en sí es parte del ecosistema transmedia: no solo lo describe, lo encarna.
 
 **Stack:** React + Vite · CSS Modules · desplegado en Vercel
 
@@ -35,6 +35,7 @@ La decisión de diseño central fue **no elegir una audiencia**: una sola landin
 03 · LA BOLSA      — el territorio con hover por eje
 04 · LOS NODOS     — el ecosistema transmedia completo
 05 · TRAYECTO      — timeline + galería de proceso
+     · LOGOS       — franja de instituciones, entre Trayecto y Contacto
 06 · CONTACTO      — tres voces de invitación
 ```
 
@@ -57,7 +58,7 @@ La decisión de diseño central fue **no elegir una audiencia**: una sola landin
 
 **Por qué dorado:** evoca el latón de una placa, el desgaste de algo que duró. Coherente con un proyecto sobre memoria y tiempo.
 
-**Por qué turquesa y rosa:** los ejes tecnología y arte necesitaban colores que convivan con el dorado sin competir. El turquesa remite a pantallas, circuitos, datos. El rosa a producción artística, cuerpo, afecto. (also, me gusta el rosa)
+**Por qué turquesa y rosa:** los ejes tecnología y arte necesitaban colores que convivan con el dorado sin competir. El turquesa remite a pantallas, circuitos, datos. El rosa a producción artística, cuerpo, afecto.
 
 ### Tipografía
 
@@ -72,9 +73,51 @@ La decisión de diseño central fue **no elegir una audiencia**: una sola landin
 
 ### Capa fantasma (ghost text)
 
-El hero tiene un texto de fondo con las palabras clave del proyecto (`MEMORIA TERRITORIO BOLSA TIEMPO PILAR...`) a `2.5%` de opacidad que sube a `5%` al hover. 
+El hero tiene un texto de fondo con las palabras clave del proyecto (`MEMORIA TERRITORIO TIEMPO PILAR INVESTIGACIÓN PELLEGRINI ARTE TECNOLOGÍA ARCHIVO TRANSMEDIA`) a `2.5%` de opacidad que sube a `5%` al hover.
 
 **Por qué:** tomado de la estética de palimpsesto — capas de escritura superpuestas. El visitante percibe que hay algo debajo de la superficie sin poder leerlo completamente. Es dislocación perceptiva para el Umbral, semántica evidente para el Par.
+
+---
+
+## Motion graphics
+
+### 1 · Entrada por scroll (scroll reveal)
+
+Todas las secciones (`.seccion`) arrancan con `opacity: 0` y `translateY: 28px`. Al entrar al viewport (threshold 8%), un `IntersectionObserver` añade la clase `.revealed` que transiciona a `opacity: 1` y `translateY: 0` en `0.75s ease`. El efecto ocurre una sola vez.
+
+**Por qué:** la página se construye a medida que se baja. Cada sección aparece como si el archivo se fuera abriendo.
+
+### 2 · Título letra por letra
+
+"TIEMPO EN BOLSA" se renderiza como spans individuales. Cada letra tiene un `animation-delay` escalonado de 65ms usando la keyframe `letterIn`: `opacity 0 → 1`, `translateY 20px → 0`, `blur 6px → 0`, curva `cubic-bezier(0.16, 1, 0.3, 1)`. Total: ~780ms para que aparezca el título completo.
+
+**Por qué:** la tipografía de máquina de escribir tiene memoria muscular. El efecto de blur + subida imita la tinta asentándose — coherente con el registro de archivo.
+
+### 3 · Ghost text con deriva
+
+El ghost text tiene `animation: ghostDrift 50s ease-in-out infinite`. La keyframe hace oscilar `translateX` entre `0%` y `-3%` alternando. Ciclo de 50 segundos — casi imperceptible pero la página respira.
+
+**Por qué:** un palimpsesto no está quieto. La deriva lenta sugiere que el texto de fondo tiene vida propia, que no es decoración.
+
+### 4 · LightRays (WebGL)
+
+Componente `LightRays.jsx` implementado con WebGL desde cero. Un fragment shader GLSL genera 16 rayos de luz que irradian desde el origen configurado, con drift suave animado por `sin()` y falloff radial. Se ubica entre el fondo y el ghost text (`z-index: 1`).
+
+**Configuración actual:**
+```jsx
+<LightRays
+  raysOrigin="top-center"
+  raysColor="#785656"    // rojo terroso — coherente con territorio
+  raysSpeed={1}
+  lightSpread={0.5}
+  rayLength={3}
+  followMouse={true}
+  mouseInfluence={0.1}   // sutil: el cursor atrae levemente los rayos
+  fadeDistance={1}
+/>
+```
+
+**Por qué:** la luz rasante es la luz del archivo — la que se usa para leer documentos viejos. El rojo terroso remite al suelo, al predio. El mouse influence añade agencia sin que sea obvio.
 
 ---
 
@@ -82,7 +125,7 @@ El hero tiene un texto de fondo con las palabras clave del proyecto (`MEMORIA TE
 
 ### Polifonía como tríada visual
 
-Cada sección tiene tres bloques en grid `1fr 1fr 1fr` — uno por eje (Territorio, Tecnología, Arte o Umbral, Instrumental, Par). Las tres voces coexisten en el mismo espacio sin jerarquía visual: ninguna está arriba, ninguna es más grande.
+Cada sección tiene tres bloques en grid `1fr 1fr 1fr` — uno por eje (Territorio, Tecnología, Arte o Umbral, Instrumental, Par). Las tres voces coexisten en el mismo espacio sin jerarquía visual.
 
 **Diferenciación de voz:**
 - Territorio/Umbral: texto en **itálica** — voz poética, sensorial
@@ -91,34 +134,26 @@ Cada sección tiene tres bloques en grid `1fr 1fr 1fr` — uno por eje (Territor
 
 ### Hover en La Bolsa: reveal por eje
 
-Al pasar el cursor sobre cada columna de la sección La Bolsa, el texto desaparece y emerge un placeholder de imagen. El color de fondo del reveal corresponde al eje: dorado para Territorio, turquesa para Tecnología, rosa para Arte.
-
-**Por qué:** la imagen no está todo el tiempo visible porque no quiero que el sitio parezca un portfolio fotográfico antes de tener las imágenes. El hover convierte la curiosidad en descubrimiento. Cuando se agreguen las imágenes finales, el efecto persiste y enriquece.
+Al pasar el cursor sobre cada columna, el texto desaparece y emerge un placeholder de imagen. El color del reveal corresponde al eje: dorado para Territorio, turquesa para Tecnología, rosa para Arte.
 
 ### Cursor personalizado
 
-Un punto dorado de 10px + un anillo de 32px que sigue al cursor con delay suave (interpolación `0.1` por frame). El anillo se expande a 56px y el cursor cambia de color al pasar por bloques interactivos:
+Un punto dorado de 10px + un anillo de 32px que sigue al cursor con interpolación `0.1` por frame. El anillo se expande a 56px y cambia de color al pasar por bloques interactivos:
 
 - Zona Territorio → dorado
 - Zona Tecnología → turquesa
 - Zona Arte → rosa
 
-**Por qué:** el cursor es el único elemento que acompaña al visitante en toda la experiencia. Convertirlo en un indicador del eje que se está recorriendo es polifonía también a nivel de interfaz.
-
 ### Hover en secciones
 
-- **Título de sección:** al hover, el tracking comprimido pasa de `-2px` a `0px` y el color va de blanco a dorado. La letra se "relaja".
-- **Bloques de tríada:** suben `6px` y el texto crece de `14px` a `15px` y aclara de `#666` a `#bbb`.
-- **Timeline:** la fila se desplaza `16px` a la derecha con `padding-left` animado y el texto crece y aclara.
-- **Cards de nodos:** suben `5px`, el título se ilumina a blanco, la descripción expande de `80px` a `300px` de max-height.
-
-**Por qué:** cada interacción tiene que parecer que el contenido "respira" al ser tocado. Los estados hover no son decoración: son información sobre que algo puede ser leído más profundamente.
+- **Título de sección:** tracking `-2px → 0px`, color blanco → dorado
+- **Bloques de tríada:** suben `6px`, texto crece `14px → 15px`, aclara `#666 → #bbb`
+- **Timeline:** fila se desplaza `16px` a la derecha con `padding-left` animado
+- **Cards de nodos:** suben `5px`, descripción expande `80px → 300px` de max-height
 
 ---
 
 ## Los Nodos Transmedia
-
-El ecosistema completo tiene 7 nodos, cada uno con una función específica en el sistema:
 
 | # | Nodo | Función transmedia |
 |---|------|--------------------|
@@ -134,74 +169,107 @@ La Exposición ocupa ancho completo en la grilla (`grid-column: 1 / -1`) porque 
 
 ---
 
+## Franja de logos institucionales
+
+Componente `LogoLoop.jsx` — scroll infinito con CSS animation `translateX(0 → -50%)`. Duplica los logos para que el loop sea seamless.
+
+**Instituciones:**
+
+| Archivo | Institución | Link |
+|---------|-------------|------|
+| `unp.png` | Universidad Nacional de Pilar | unpilar.edu.ar |
+| `unvm.png` | Universidad Nacional de Villa María | unvm.edu.ar |
+| `una.png` | UNA — Artes Multimediales | Diplomatura IA aplicada al arte |
+| `unl.png` | Universidad Nacional del Litoral | unl.edu.ar |
+
+Los archivos PNG van en `public/logos/`. Para agregar una institución, editar `src/data/logos.js`.
+
+---
+
+## Trayecto — timeline real del proyecto
+
+| Fecha | Hito |
+|-------|------|
+| Junio 2025 | TP de Transmedia I · UNP. Primera entrevista a Sonia Lembeye en el Pellegrini |
+| Julio 2025 | Concepto del ArtGame · materia Videojuegos y Sociedad · UNP |
+| Agosto 2025 | Factibilidad en Diplomatura Cooperativismo Cultural · UNVM |
+| Febrero 2026 | Recolección de testimonios · Diplomatura Patrimonio Cultural · UNVM. Definición de la pregunta-problema |
+| Abril 2026 | Contacto con Biblioteca Popular Bartolomé Mitre · Proyectos Socioculturales · UNP |
+| Abril 2026 | Biblia transmedia · Taller Transmedia 2 · UNP |
+| Mayo 2026 | El laboratorio está activo. Lanzamiento de esta landing page |
+
+---
+
 ## Placeholders de imagen
 
 El sitio está diseñado para funcionar en dos estados:
 
-**Estado actual (sin imágenes):** los placeholders son parte del diseño — bordes `dashed`, fondos casi negros, instrucciones claras. El sitio se ve terminado aunque vacío.
+**Estado actual (sin imágenes):** placeholders con bordes `dashed`, fondos casi negros. El sitio se ve terminado aunque vacío.
 
-**Estado final (con imágenes):** reemplazar cada placeholder por `<img>` o `<video>`.
+**Estado final (con imágenes):** reemplazar cada placeholder.
 
-### Imágenes necesarias
+| Sección | Cantidad | Formato | Descripción |
+|---------|----------|---------|-------------|
+| Hero | 1 | Horizontal, alta res | Vista del predio, luz rasante. Acepta video mp4 muted autoplay |
+| La Bolsa — Territorio | 1 | Vertical o cuadrado | Exterior del predio |
+| La Bolsa — Tecnología | 1 | Vertical o cuadrado | Captura de la web app o mapa |
+| La Bolsa — Arte | 1 | Vertical o cuadrado | Fanzine, ArtGame, VR |
+| Galería Trayecto | 6 | 4:3 o cuadrado | Trabajo de campo, proceso, comunidad |
 
-| Sección | Cantidad | Formato recomendado | Descripción |
-|---------|----------|--------------------|----|
-| Hero | 1 | Horizontal, alta res | Vista del predio, luz rasante, espacio vacío. También acepta video mp4 muted autoplay |
-| La Bolsa — Territorio | 1 | Vertical o cuadrado | Exterior del predio, luz natural |
-| La Bolsa — Tecnología | 1 | Vertical o cuadrado | Captura de la web app o mapa digital |
-| La Bolsa — Arte | 1 | Vertical o cuadrado | Fanzine, ArtGame, VR o intervención artística |
-| Galería Trayecto | 6 | 4:3 o cuadrado | Trabajo de campo, proceso, entrevistas, comunidad |
+### Para agregar imágenes
+
+**Hero** — en `src/components/Hero.jsx`, reemplazar `<div className={styles.bg} />` por:
+```jsx
+<img src="/images/hero.jpg" alt="El predio" className={styles.bgImg} />
+```
+```css
+/* Hero.module.css */
+.bgImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
+```
+
+**La Bolsa** — en `src/components/LaBolsa.jsx`, dentro de cada reveal:
+```jsx
+<img src="/images/territorio.jpg" alt="Territorio" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.6 }} />
+```
+
+**Galería** — en `src/components/Trayecto.jsx`:
+```jsx
+<img src={`/images/galeria-${g.num}.jpg`} alt={g.hint} style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+```
+
+Imágenes en `public/images/`.
 
 ---
 
 ## Deploy y flujo de trabajo
 
 ```
-Código → GitHub (tricosita/Landing-TiempoEnBolsa) → Vercel (auto-deploy)
+Código → GitHub (tricosita/Landing-TiempoEnBolsa) → Vercel CLI → producción
 ```
 
 **URL de producción:** https://landing-tiempo-en-bolsa.vercel.app
 
-NOTAS TRI Para deployar cambios:
+**Para deployar cambios:**
 ```bash
 cd "landing-tiempo-en-bolsa"
 git add .
 git commit -m "descripción del cambio"
 git push
+
+# deploy a Vercel (el proyecto no está enlazado a GitHub, usar CLI):
+vercel --prod --token <token> --yes --scope tricosita-projects
 ```
 
-Vercel detecta el push y redeploya automáticamente en ~30 segundos.
+**Para editar textos:** todos los textos de contenido están en `src/data/nodos.js` y en cada componente JSX. Los más frecuentes:
+
+| Archivo | Qué contiene |
+|---------|-------------|
+| `src/data/nodos.js` | Nodos transmedia, timeline, galería |
+| `src/data/logos.js` | Instituciones del logo loop |
+| `src/components/Hero.jsx` | Título, subtítulo, ghost text |
+| `src/components/QueEs.jsx` | Definición en tres voces |
+| `src/components/Contacto.jsx` | Textos de contacto |
 
 ---
 
-## Para agregar las imágenes
-
-### Hero
-En `src/components/Hero.jsx`, reemplazar el `<div className={styles.bg}>` por:
-```jsx
-<img src="/images/hero.jpg" alt="El predio" className={styles.bgImg} />
-```
-Y agregar en `Hero.module.css`:
-```css
-.bgImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
-```
-
-### La Bolsa
-En `src/components/LaBolsa.jsx`, dentro de cada `.bolsa-img`, agregar:
-```jsx
-<img src="/images/territorio.jpg" alt="Territorio" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.6 }} />
-```
-
-### Galería
-En `src/components/Trayecto.jsx`, reemplazar el `<div className={styles.galeriaItem}>` por:
-```jsx
-<div className={styles.galeriaItem}>
-  <img src={`/images/galeria-${g.num}.jpg`} alt={g.hint} style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-</div>
-```
-
-Poner las imágenes en `public/images/`.
-
----
-
-* Mayo 2025*
+*Documento actualizado Mayo 2026 · generado con Claude Code*

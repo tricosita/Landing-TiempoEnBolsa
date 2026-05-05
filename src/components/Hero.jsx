@@ -1,9 +1,23 @@
 import styles from './Hero.module.css'
+import LightRays from './LightRays'
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.bg} />
+
+      <div className={styles.rays}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#785656"
+          raysSpeed={1}
+          lightSpread={0.5}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          fadeDistance={1}
+        />
+      </div>
 
       <div className={styles.ghost}>
         MEMORIA TERRITORIO TIEMPO PILAR INVESTIGACIÓN PELLEGRINI ARTE TECNOLOGÍA ARCHIVO MEMORIA TERRITORIO TRANSMEDIA

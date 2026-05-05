@@ -1,0 +1,66 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc(var(--h, 40px) + 24px); /* logo height + item padding */
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: var(--gap, 60px);
+  animation: scroll var(--dur, 30s) linear infinite;
+  animation-direction: var(--dir, normal);
+}
+
+.pauseHover:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 10px;
+}
+.item:hover { opacity: 1; }
+
+.scale { transition: opacity 0.3s ease, transform 0.3s ease; }
+.scale:hover { transform: scale(1.05); }
+
+.icon {
+  font-size: var(--h, 40px);
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  height: var(--h, 40px);
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+/* fade edges */
+.fadeL, .fadeR {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.fadeL { left:  0; background: linear-gradient(to right, var(--fc, #080808), transparent); }
+.fadeR { right: 0; background: linear-gradient(to left,  var(--fc, #080808), transparent); }
