@@ -107,7 +107,7 @@
   height: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-left: 5px solid var(--gold);
+  border-left: 5px solid var(--gold, #c8a96e);
   margin-left: 1px;
   opacity: 0.7;
 }
@@ -115,12 +115,18 @@
 .stopRect {
   width: 6px;
   height: 6px;
-  background: var(--gold);
+  background: var(--gold, #c8a96e);
   opacity: 0.7;
 }
 
 .inactive .triangle {
   border-left-color: #333;
+}
+
+/* stopRect is only shown when playing=true, which requires active=true, so
+   inactive + stopRect cannot co-occur. Rule kept for CSS completeness. */
+.inactive .stopRect {
+  background: #333;
 }
 
 .audioText {
