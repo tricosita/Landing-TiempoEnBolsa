@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Portal.module.css'
 
 export default function Portal({ quote, author, audioSrc, audioDuration }) {
@@ -6,15 +6,25 @@ export default function Portal({ quote, author, audioSrc, audioDuration }) {
   const [playing, setPlaying] = useState(false)
   const active = Boolean(audioSrc)
 
+  // Reset playing state if audioSrc is removed while a clip is playing
+  useEffect(() => {
+    if (!active) setPlaying(false)
+  }, [active])
+
   function handleAudio() {
     if (!active) return
     if (playing) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      }
       setPlaying(false)
     } else {
-      audioRef.current.play()
-      setPlaying(true)
+      audioRef.current.play().then(() => {
+        setPlaying(true)
+      }).catch(() => {
+        // play blocked by browser autoplay policy or network error
+      })
     }
   }
 
