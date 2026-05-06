@@ -1,3 +1,4 @@
+// audioSrc: string path to clip when available, undefined = not yet recorded
 export const portales = [
   {
     id: 'p1',
