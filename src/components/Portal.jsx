@@ -23,7 +23,7 @@ export default function Portal({ quote, author, audioSrc, audioDuration }) {
       audioRef.current.play().then(() => {
         setPlaying(true)
       }).catch(() => {
-        // play blocked by browser autoplay policy or network error
+        // play failed (network error, missing file, CORS)
       })
     }
   }
