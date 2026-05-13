@@ -19,7 +19,7 @@ export default function Contacto() {
         <div className="eje-bloque arte">
           <div className="eje-nombre">Par</div>
           <p className="eje-texto up">
-            Colaboraciones · intercambios · residencias · investigadorxs bienvenidxs
+            Colaboraciones · intercambios · investigadores bienvenidos
           </p>
         </div>
       </div>
