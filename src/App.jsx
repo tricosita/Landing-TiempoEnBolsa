@@ -10,7 +10,9 @@ import Trayecto from './components/Trayecto'
 import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 import LogoLoop from './components/LogoLoop'
+import Portal from './components/Portal'
 import { instituciones } from './data/logos'
+import { portales } from './data/portales'
 
 export default function App() {
   useEffect(() => {
@@ -31,8 +33,10 @@ export default function App() {
       <Nav />
       <Hero />
       <QueEs />
+      <Portal key={portales[0].id} {...portales[0]} />
       <LaBolsa />
       <LosNodos />
+      <Portal key={portales[1].id} {...portales[1]} />
       <Trayecto />
 
       <div style={{ padding: '48px 0', borderBottom: '1px solid #0f0f0f' }}>
@@ -50,6 +54,7 @@ export default function App() {
         />
       </div>
 
+      <Portal key={portales[2].id} {...portales[2]} />
       <Contacto />
       <Footer />
     </>

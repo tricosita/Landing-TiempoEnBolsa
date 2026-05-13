@@ -1,0 +1,170 @@
+.portal {
+  min-height: 40vh;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 56px 48px;
+  position: relative;
+  border-top: 1px solid rgba(200, 169, 110, 0.06);
+  border-bottom: 1px solid rgba(200, 169, 110, 0.06);
+}
+
+.portal::before,
+.portal::after {
+  content: '';
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+}
+
+.portal::before {
+  top: 0;
+  background: linear-gradient(to right, transparent, rgba(200, 169, 110, 0.12), transparent);
+}
+
+.portal::after {
+  bottom: 0;
+  background: linear-gradient(to right, transparent, rgba(200, 169, 110, 0.12), transparent);
+}
+
+.eyebrow {
+  font-size: 7px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(200, 169, 110, 0.2);
+  margin-bottom: 28px;
+}
+
+.quote {
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-style: italic;
+  color: #5a5750;
+  line-height: 1.85;
+  max-width: 520px;
+  margin-bottom: 24px;
+  letter-spacing: 0.2px;
+}
+
+.rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(200, 169, 110, 0.18);
+  margin-bottom: 16px;
+}
+
+.author {
+  font-size: 7px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #2a2a22;
+  margin-bottom: 20px;
+}
+
+.audioBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border: 1px solid rgba(200, 169, 110, 0.15);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  font-family: inherit;
+}
+
+.audioBtn:hover:not(.inactive) {
+  border-color: rgba(200, 169, 110, 0.35);
+  background: rgba(200, 169, 110, 0.04);
+}
+
+.inactive {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #111;
+}
+
+.playRing {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(200, 169, 110, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.inactive .playRing {
+  border-color: #1e1e1e;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 5px solid var(--gold, #c8a96e);
+  margin-left: 1px;
+  opacity: 0.7;
+}
+
+.stopRect {
+  width: 6px;
+  height: 6px;
+  background: var(--gold, #c8a96e);
+  opacity: 0.7;
+}
+
+.inactive .triangle {
+  border-left-color: #333;
+}
+
+/* stopRect is only shown when playing=true, which requires active=true, so
+   inactive + stopRect cannot co-occur. Rule kept for CSS completeness. */
+.inactive .stopRect {
+  background: #333;
+}
+
+.audioText {
+  text-align: left;
+}
+
+.audioLabel {
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(200, 169, 110, 0.5);
+  display: block;
+}
+
+.inactive .audioLabel {
+  color: #2a2a2a;
+}
+
+.audioDur {
+  font-size: 6px;
+  letter-spacing: 1px;
+  color: #252520;
+  margin-top: 2px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .portal {
+    padding: 48px 24px;
+  }
+
+  .portal::before,
+  .portal::after {
+    left: 24px;
+    right: 24px;
+  }
+
+  .quote {
+    max-width: 100%;
+  }
+}
