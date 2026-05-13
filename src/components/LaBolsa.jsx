@@ -18,7 +18,7 @@ const ejes = [
   {
     eje: 'arte',
     label: 'Arte',
-    texto: 'el territorio como material. La bolsa como soporte, no como contexto. Práctica situada. Memoria no monumentalizada.',
+    texto: 'El territorio como material. La bolsa como soporte. Práctica situada. Memoria no monumentalizada.',
     style: 'normal',
     imgHint: '[ IMAGEN DE PRÁCTICA ARTÍSTICA ]\nFanzine, ArtGame, VR o intervención\nImagen de producción artística\nFormato: vertical o cuadrado',
   },
