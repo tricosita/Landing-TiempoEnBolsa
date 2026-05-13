@@ -7,13 +7,13 @@ export default function QueEs() {
         <div className="eje-bloque territorio">
           <div className="eje-nombre">Territorio</div>
           <p className="eje-texto">
-            Un proyecto que hace visible lo que el territorio esconde. La bolsa como campo de investigación activo, no como escenario.
+            Un proyecto que hace visible lo que el territorio a veces olvida. La bolsa como campo de investigación activa, no como escenario.
           </p>
         </div>
         <div className="eje-bloque tech">
           <div className="eje-nombre">Tecnología</div>
           <p className="eje-texto op">
-            Dispositivo de investigación digital: registro, archivo y generación de contenido mediados por herramientas computacionales y transmedia.
+            Dispositivo de investigación digital. Registro, archivo y generación de contenido mediados por herramientas computacionales y transmedia.
           </p>
         </div>
         <div className="eje-bloque arte">
