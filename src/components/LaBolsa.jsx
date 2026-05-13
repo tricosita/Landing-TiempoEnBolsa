@@ -18,8 +18,8 @@ const ejes = [
   {
     eje: 'arte',
     label: 'Arte',
-    texto: 'El territorio como material. La bolsa como soporte, no como contexto. Práctica situada. Memoria no monumentalizada.',
-    style: 'up',
+    texto: 'el territorio como material. La bolsa como soporte, no como contexto. Práctica situada. Memoria no monumentalizada.',
+    style: 'normal',
     imgHint: '[ IMAGEN DE PRÁCTICA ARTÍSTICA ]\nFanzine, ArtGame, VR o intervención\nImagen de producción artística\nFormato: vertical o cuadrado',
   },
 ]
@@ -33,7 +33,16 @@ export default function LaBolsa() {
         {ejes.map(({ eje, label, texto, style, imgHint }) => (
           <div key={eje} className={`${styles.bloque} ${styles[eje]}`}>
             <div className={styles.content}>
-              <div className={`eje-nombre ${eje}`} style={{ fontSize: 7, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div className={`eje-nombre ${eje}`} style={{
+                fontSize: 10.5,
+                letterSpacing: 4,
+                textTransform: 'uppercase',
+                marginBottom: 16,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                color: eje === 'territorio' ? '#c8a96e' : eje === 'tech' ? '#4ecdc4' : '#ff6b9d'
+              }}>
                 <span className={styles.dot} />
                 {label}
               </div>
